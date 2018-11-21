@@ -1,7 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
-   <%@ taglib uri = "http://www.springframework.org/tags/form" prefix="mvc" %>
-   <%@ page isELIgnored="false" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@ taglib uri = "http://www.springframework.org/tags/form" prefix="mvc" %>
+<%@ page isELIgnored="false" %>
 
 <!DOCTYPE html>
 <html>
@@ -15,15 +15,15 @@
 	<table>
 	    <tr>
 	        <td><mvc:label path="phoneId">Phone</mvc:label></td>
-	        <td><mvc:input path="phoneId" /></td>
+	        <td><mvc:input path="phoneId" id="phoneId" name="phoneId" type="text"/></td>
 	    </tr>
 	    <tr>
 	        <td><mvc:label path="fName">First Name</mvc:label></td>
-	        <td><mvc:input path="fName" /></td>
+	        <td><mvc:input path="fName" id="fName" name="fName" type="text"/></td>
 	    </tr>
 		<tr>
             <td><mvc:label path="lName">Last Name</mvc:label></td>
-            <td><mvc:input path="lName" /></td>
+            <td><mvc:input path="lName" id="lName" name="lName" type="text"/></td>
         </tr>
         <tr>
 	        <td colspan="2">

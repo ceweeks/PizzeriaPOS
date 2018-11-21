@@ -3,9 +3,11 @@
 	<persistence-unit name="PizzeriaPOS" transaction-type="RESOURCE_LOCAL">
 		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 				<class>edu.dmacc.spring.pizzeriapos.Customer</class>
+				<class>edu.dmacc.spring.pizzeriapos.Order</class>
+				<class>edu.dmacc.spring.pizzeriapos.OrderItem</class>
 		<properties>
-			<property name="javax.persistence.jdbc.driver" value="com.mysql.idbc.Driver"/>
-			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/DATABASENAME"/>
+			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/pizzeriapos"/>
 			<property name="javax.persistence.jdbc.user" value="root"/>
 			<property name="javax.persistence.jdbc.password" value="Wecu#8228"/>
 		</properties>

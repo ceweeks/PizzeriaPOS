@@ -22,6 +22,7 @@
             <td>Last name</td>
             <td>${c.lName}</td>
         </tr>
+        
         </table>
 <a href = "viewAll.mvc">Random Link</a>
 </body>

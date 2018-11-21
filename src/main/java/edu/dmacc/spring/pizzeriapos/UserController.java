@@ -40,7 +40,7 @@ public class UserController {
 	}
 	
 	@Bean
-	public CustomerDao cDao() {
+	public CustomerDao cdao() {
 		CustomerDao cdao = new CustomerDao();
 		return cdao;
 	}

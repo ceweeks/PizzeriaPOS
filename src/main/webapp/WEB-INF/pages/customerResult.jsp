@@ -24,6 +24,20 @@
         </tr>
         
         </table>
+        
+<mvc:form modelAttribute="customer" action="identifiedCustomerNextStep.mvc" id="orderOrCheckoutForm" method="post">
+		<table>
+			<tr>
+				<td><mvc:hidden path="id" value="${custId}"/></td>
+				<td><mvc:hidden path="phoneId" value="${c.phoneId}"/></td>
+				<td><mvc:hidden path="fName" value="${c.fName}"/></td>
+				<td><mvc:hidden path="lName" value="${c.lName}"/></td>
+			</tr>
+		</table>		
+	<input type="submit" value="Create an order" id="createOrderButton" name="startOrder">
+	<input type="submit" value="Check out" id="checkOutButton" name="checkoutCustomer">
+</mvc:form>	
+        
 <a href = "viewAll.mvc">Random Link</a>
 </body>
 

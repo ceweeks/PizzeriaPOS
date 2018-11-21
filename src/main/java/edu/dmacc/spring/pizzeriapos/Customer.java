@@ -13,14 +13,14 @@ public class Customer {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
-	private int phoneId;
+	private double phoneId;
 	private String fName;
 	private String lName;
 	
-	public int getPhoneId() {
+	public double getPhoneId() {
 		return phoneId;
 	}
-	public void setPhoneId(int phoneId) {
+	public void setPhoneId(double phoneId) {
 		this.phoneId = phoneId;
 	}
 	public int getId() {

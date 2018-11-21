@@ -115,9 +115,48 @@ public class OrderItem {
 	public double getItemCost() {
 		return itemCost;
 	}
-	public void setItemCost(double itemCost) {
-		this.itemCost = itemCost;
+	public void setItemCost() {
+		double cost = 0;
+		if(size.equals("S")) {
+			cost += 10;
+		} else if(size.equals("M")) {
+			cost += 13;
+		} else if(size.equals("L")) {
+			cost += 16;
+		} else {
+			cost += 19;
+		}
+	
+		if(pepperoni) {
+			cost += .5;
+		}
+		if(beef) {
+			cost += .5;
+		}
+		if(sausage) {
+			cost += .5;
+		}
+		if(canadianBacon) {
+			cost += .5;
+		}
+		if(pineapple) {
+			cost += .5;
+		}
+		if(onions) {
+			cost += .5;
+		}
+		if(bellPeppers) {
+			cost += .5;
+		}
+		if(jalapenos) {
+			cost += .5;
+		}
+		if(blackOlives) {
+			cost += .5;
+		}
+		if(mushrooms) {
+			cost += .5;
+		}
+		this.itemCost = cost;
 	}
-	
-	
 }

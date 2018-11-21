@@ -17,7 +17,7 @@ public class Order {
 	private String deliveryStreet;
 	private String deliveryCity;
 	private String deliveryState;
-	private String deliveryZip;
+	private int deliveryZip;
 	private double orderCost;
 	private boolean orderCompletedStatus;
 	
@@ -51,10 +51,10 @@ public class Order {
 	public void setDeliveryState(String deliveryState) {
 		this.deliveryState = deliveryState;
 	}
-	public String getDeliveryZip() {
+	public int getDeliveryZip() {
 		return deliveryZip;
 	}
-	public void setDeliveryZip(String deliveryZip) {
+	public void setDeliveryZip(int deliveryZip) {
 		this.deliveryZip = deliveryZip;
 	}
 	public double getOrderCost() {

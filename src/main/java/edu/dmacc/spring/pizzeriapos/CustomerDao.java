@@ -20,11 +20,12 @@ public class CustomerDao {
 		em.close();
 	}
 
-	public List<Customer> getAllCustomers() {
+	public List<Customer> getAllCustomersSearch(Customer custSearch) {
 		EntityManager em = emfactory.createEntityManager();
 		em.getTransaction().begin();
-		String q = "select c from Customer c";
+		String q = "select c from Customer c where c.phoneId = :phoneid";
 		TypedQuery<Customer> typedQuery = em.createQuery(q, Customer.class);
+		typedQuery.setParameter("phoneid", custSearch.getPhoneId());
 		List<Customer> all = typedQuery.getResultList();
 		return all;
 	}
@@ -40,5 +41,11 @@ public class CustomerDao {
 		typedQuery.setParameter("lname", cust.getlName());
 		List<Customer> customers = typedQuery.getResultList();
 		return customers.get(0).getId();
+	}
+	
+	public Customer retrieveCustomerById(int id) {
+		EntityManager em = emfactory.createEntityManager();
+		Customer found = em.find(Customer.class, id);
+		return found;
 	}
 }

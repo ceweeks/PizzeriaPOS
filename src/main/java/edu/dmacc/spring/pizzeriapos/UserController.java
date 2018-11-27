@@ -19,6 +19,23 @@ public class UserController {
 	private static final String[] sizes = {"S", "M", "L", "X"};
 	private static final String[] crusts = {"T", "P"};
 	
+	@RequestMapping(value = "/customerSearch")
+	public ModelAndView searchCustomerPage() {
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("homeSearch");
+		modelAndView.addObject("customer", new Customer());
+		return modelAndView;
+	}
+	
+	@RequestMapping(value = "/searchForCustomer")
+	public ModelAndView reviewCustomerSearch(Customer cust) {
+		ModelAndView modelAndView = new ModelAndView();
+		List<Customer> allCustomers = customerDao.getAllCustomersSearch(cust);
+		modelAndView.setViewName("customerSearchResult");
+		modelAndView.addObject("allcustomers", allCustomers);
+		return modelAndView;
+	}
+	
 	@RequestMapping(value = "/form")
 	public ModelAndView customer() {
 		ModelAndView modelAndView = new ModelAndView();
@@ -38,12 +55,13 @@ public class UserController {
 		return modelAndView;
 	}
 	
-	@RequestMapping(value = "/viewCustomer")
-	public ModelAndView viewAllCustomers() {
+	@RequestMapping(value = "/sendToResult")
+	public ModelAndView haveCustomerSendToResult(Customer cust) {
 		ModelAndView modelAndView = new ModelAndView();
-		List<Customer> allCustomers = customerDao.getAllCustomers();
-		modelAndView.setViewName("viewCustomer");
-		modelAndView.addObject("all", allCustomers);
+		Customer custToSend = customerDao.retrieveCustomerById(cust.getId());
+		modelAndView.addObject("c", custToSend);
+		modelAndView.addObject("custId", custToSend.getId());
+		modelAndView.setViewName("customerResult");
 		return modelAndView;
 	}
 	
@@ -106,7 +124,7 @@ public class UserController {
 	public ModelAndView processOrder(Order orderWithInfo) {
 		orderDao.updateDeliveryInfo(orderWithInfo);
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("customerForm");
+		modelAndView.setViewName("homeSearch");
 		modelAndView.addObject("customer", new Customer());
 		return modelAndView;
 	}

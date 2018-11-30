@@ -6,20 +6,20 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Customer</title>
+<title>PizzeriaPOS - customer result</title>
 </head>
-<body> <h2>Customer Result</h2>
+<body> <h2>Customer Selected to Process</h2>
     <table>
         <tr>
-            <td>Phone</td>
+            <td>Phone:</td>
             <td>${c.phoneId}</td>
         </tr>
         <tr>
-            <td>First name</td>
+            <td>First name:</td>
             <td>${c.fName}</td>
         </tr>
         <tr>
-            <td>Last name</td>
+            <td>Last name:</td>
             <td>${c.lName}</td>
         </tr>
         
@@ -38,7 +38,6 @@
 	<input type="submit" value="Check out" id="checkOutButton" name="checkoutCustomer">
 </mvc:form>	
         
-<a href = "viewAll.mvc">Random Link</a>
 </body>
 
 </html>

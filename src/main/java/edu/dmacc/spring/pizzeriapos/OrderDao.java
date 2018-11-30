@@ -52,5 +52,25 @@ public class OrderDao {
 		em.getTransaction().commit();
 		em.close();
 	}
-
+	
+	public List<Order> getAllPendingOrders(Customer custSearch) {
+		EntityManager em = emfactory.createEntityManager();
+		em.getTransaction().begin();
+		String q = "select o from Order o where o.customerId = :custid " + 
+				"AND o.orderCompletedStatus = :status";
+		TypedQuery<Order> typedQuery = em.createQuery(q, Order.class);
+		typedQuery.setParameter("custid", custSearch.getId());
+		typedQuery.setParameter("status", false);
+		List<Order> all = typedQuery.getResultList();
+		return all;
+	}
+	
+	public void updateToComplete(Order orderToComplete) {
+		EntityManager em = emfactory.createEntityManager();
+		Order toUpdate = em.find(Order.class, orderToComplete.getId());
+		em.getTransaction().begin();
+		toUpdate.setOrderCompletedStatus(true);
+		em.getTransaction().commit();
+		em.close();
+	}
 }

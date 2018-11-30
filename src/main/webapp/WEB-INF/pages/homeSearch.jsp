@@ -7,10 +7,10 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Spring MVC Form Handling</title>
+<title>PizzeriaPOS - home search</title>
 </head>
 <body>
-<h2>PizzeriaPOS Phone Lookup</h2>
+<h2>Customer Phone Lookup</h2>
 <mvc:form modelAttribute="customer"  action="searchForCustomer.mvc">
  <table>
 	    <tr>

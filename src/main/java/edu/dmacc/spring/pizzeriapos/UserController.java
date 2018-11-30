@@ -1,5 +1,6 @@
 package edu.dmacc.spring.pizzeriapos;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,8 +32,12 @@ public class UserController {
 	public ModelAndView reviewCustomerSearch(Customer cust) {
 		ModelAndView modelAndView = new ModelAndView();
 		List<Customer> allCustomers = customerDao.getAllCustomersSearch(cust);
-		modelAndView.setViewName("customerSearchResult");
-		modelAndView.addObject("allcustomers", allCustomers);
+		if(allCustomers.isEmpty()) {
+			modelAndView.setViewName("customerSearchNoResults");
+		} else {
+			modelAndView.setViewName("customerSearchResult");
+			modelAndView.addObject("allcustomers", allCustomers);
+		}
 		return modelAndView;
 	}
 	
@@ -88,8 +93,34 @@ public class UserController {
 	
 	@RequestMapping(value = "/identifiedCustomerNextStep", params="checkoutCustomer", method=RequestMethod.POST)
 	public ModelAndView checkoutCustomer(Customer custToCheckout) {
-		//TODO for Antonio
-		return null;
+		ModelAndView modelAndView = new ModelAndView();
+		List<Order> orders = orderDao.getAllPendingOrders(custToCheckout);
+		modelAndView.setViewName("pendingOrderResult");
+		modelAndView.addObject("allorders", orders);
+		return modelAndView;
+	}
+	
+	@RequestMapping(value = "/sendToOrderReviewCheckout")
+	public ModelAndView reviewOrderResults(Order order) {
+		ModelAndView modelAndView = new ModelAndView();
+		List<OrderItem> orderItems = orderItemDao.getAllOrderItems(order);
+		List<String> allOrderItems = new ArrayList<String>();
+		for(OrderItem item : orderItems) {
+			allOrderItems.add(item.getOrderItemString());
+		}
+		modelAndView.addObject("allorderitems", allOrderItems);
+		modelAndView.addObject("orderToCheckout", order);
+		modelAndView.setViewName("orderItemResults");
+		return modelAndView;
+	}
+	
+	@RequestMapping(value = "/finalCheckout")
+	public ModelAndView finalCheckout(Order orderToCheckout) {
+		orderDao.updateToComplete(orderToCheckout);
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("homeSearch");
+		modelAndView.addObject("customer", new Customer());
+		return modelAndView;
 	}
 	
 	@RequestMapping(value = "/createdOrderItem", params="additionalOrderItem", method=RequestMethod.POST)

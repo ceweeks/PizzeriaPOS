@@ -8,28 +8,33 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>PizzeriaPOS - customer search result</title>
+<title>PizzeriaPOS - pending order result</title>
 </head>
 <body>
-<h2>Customers Found</h2>
+<h2>Pending Orders for this Customer</h2>
 <br>
-<mvc:form modelAttribute="customer" action="sendToResult.mvc" id="selectCustomer">
-	<c:forEach items="${allcustomers}" var="item">
+<mvc:form modelAttribute="order" action="sendToOrderReviewCheckout.mvc" id="selectOrder">
+	<c:forEach items="${allorders}" var="item">
 		<table>
 			<tr>
 				<td><input type="radio" name="id" path="id" value="${item.id}" required/></td>
-				<td>Phone Number: </td>
-				<td>${item.phoneId}</td>
+				<td>Order:</td>
+				<td>${item.id}</td>
 			</tr>
 			<tr>
 				<td> </td>
-				<td>First Name: </td>
-				<td>${item.fName}</td>
+				<td>Order Total: </td>
+				<td>$${item.orderCost}0</td>
 			</tr>
 			<tr>
 				<td> </td>
-				<td>Last Name: </td>
-				<td>${item.lName}</td>
+				<td>Address: </td>
+				<td>${item.deliveryStreet}</td>
+			</tr>
+			<tr>
+				<td> </td>
+				<td> </td>
+				<td>${item.deliveryCity}, ${item.deliveryState} ${item.deliveryZip}</td>
 			</tr>
 		</table>		
 		<br />
@@ -37,9 +42,9 @@
 		<br />
 	</c:forEach>
 	
-	<input type="submit" value="Use this customer">
+	<input type="submit" value="Check out Order">
 </mvc:form>	
 	<br>
-	<a href = "customerSearch.mvc">Back to Search Home</a>
+	<a href="home.mvc">Return to main menu</a>
 </body>
 </html>

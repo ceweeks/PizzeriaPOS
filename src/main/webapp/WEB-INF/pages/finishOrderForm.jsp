@@ -7,10 +7,10 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Finish order</title>
+<title>PizzeriaPOS - finish order form</title>
 </head>
 <body>
-<h2>Finish Order Form</h2>
+<h2>Final Order Information</h2>
 <mvc:form modelAttribute="order" action="finalizeOrder.mvc">
 	<table>
 	    <tr>
@@ -39,7 +39,6 @@
 	    </tr>
 	</table>  
 </mvc:form>
-<a href = "viewAll.mvc">Just a link for now</a>
 </body>
 
 <!-- 

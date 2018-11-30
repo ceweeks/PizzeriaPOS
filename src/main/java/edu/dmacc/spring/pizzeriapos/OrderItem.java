@@ -159,4 +159,64 @@ public class OrderItem {
 		}
 		this.itemCost = cost;
 	}
+	
+	public String getOrderItemString() {
+		String returnString = "";
+		if(size.equals("S")) {
+			returnString += "Small ";
+		} else if(size.equals("M")) {
+			returnString += "Medium ";
+		} else if(size.equals("L")) {
+			returnString += "Large ";
+		} else {
+			returnString += "Extra large ";
+		}
+		
+		if(crust.equals("T")) {
+			returnString += "thin crust";
+		} else {
+			returnString += "pan crust";
+		}
+		
+		returnString += "\nToppings: ";
+	
+		if(pepperoni || beef || sausage || canadianBacon || pineapple || onions || bellPeppers || jalapenos || blackOlives || mushrooms) {
+			if(pepperoni) {
+				returnString += "pepperoni ";
+			}
+			if(beef) {
+				returnString += "beef ";
+			}
+			if(sausage) {
+				returnString += "sausage ";
+			}
+			if(canadianBacon) {
+				returnString += "canadian-bacon ";
+			}
+			if(pineapple) {
+				returnString += "pineapple ";
+			}
+			if(onions) {
+				returnString += "onions ";
+			}
+			if(bellPeppers) {
+				returnString += "bell-peppers ";
+			}
+			if(jalapenos) {
+				returnString += "jalapenos ";
+			}
+			if(blackOlives) {
+				returnString += "black-olives ";
+			}
+			if(mushrooms) {
+				returnString += "mushrooms ";
+			}
+		} else {
+			returnString += "cheese";
+		}
+		
+		returnString += "\n\n";
+
+		return returnString;
+	}
 }

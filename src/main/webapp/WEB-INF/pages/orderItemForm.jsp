@@ -7,12 +7,16 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Create a customer</title>
+<title>PizzeriaPOS - order item form</title>
 </head>
 <body>
-<h2>Add order items</h2>
+<h2>Add order items to the order</h2>
+
 <mvc:form modelAttribute="orderitem" action="createdOrderItem.mvc" id="orderItemForm" method="post">
 	<table>
+	    <tr>
+	    	<td>Order number:</td>
+	    	<td>${orderid}</td>
 	    <tr>
 	        <td><mvc:label path="size">Size</mvc:label></td>
             <td><mvc:select path="size" items="${sizes}" /></td>
@@ -73,7 +77,6 @@
 	    </tr>
         <tr>
         	<td><mvc:hidden path="orderId" value="${orderid}"/></td>
-        	<td>${orderid}</td>
         </tr>
         <tr>
 	        <td colspan="2">
@@ -85,7 +88,7 @@
 	    </tr>
 	</table>  
 </mvc:form>
-<a href = "viewAll.mvc">Just a link for now</a>
+
 </body>
 
 <!-- 

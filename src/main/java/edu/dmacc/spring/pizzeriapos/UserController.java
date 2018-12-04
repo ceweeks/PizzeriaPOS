@@ -54,6 +54,9 @@ public class UserController {
 		ModelAndView modelAndView = new ModelAndView();
 		customerDao.insertCustomer(customer);
 		int custid = customerDao.getCustomerId(customer);
+		String phoneString = String.format("%f", customer.getPhoneId());
+		String phone = "(" + phoneString.substring(0, 3) + ")" + phoneString.substring(3, 6) + "-" + phoneString.substring(6, 10);
+		modelAndView.addObject("custphone", phone);
 		modelAndView.setViewName("customerResult");
 		modelAndView.addObject("c", customer);
 		modelAndView.addObject("custId", custid);
@@ -64,6 +67,9 @@ public class UserController {
 	public ModelAndView haveCustomerSendToResult(Customer cust) {
 		ModelAndView modelAndView = new ModelAndView();
 		Customer custToSend = customerDao.retrieveCustomerById(cust.getId());
+		String phoneString = String.format("%f", custToSend.getPhoneId());
+		String phone = "(" + phoneString.substring(0, 3) + ")" + phoneString.substring(3, 6) + "-" + phoneString.substring(6, 10);
+		modelAndView.addObject("custphone", phone);
 		modelAndView.addObject("c", custToSend);
 		modelAndView.addObject("custId", custToSend.getId());
 		modelAndView.setViewName("customerResult");

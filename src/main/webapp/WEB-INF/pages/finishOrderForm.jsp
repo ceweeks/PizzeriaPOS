@@ -11,7 +11,7 @@
 </head>
 <body>
 <h2>Final Order Information</h2>
-<mvc:form modelAttribute="order" action="finalizeOrder.mvc">
+<mvc:form modelAttribute="order" action="finalizeOrder.mvc" id="finishOrderForm">
 	<table>
 	    <tr>
 	        <td><mvc:label path="deliveryStreet">Delivery street</mvc:label></td>
@@ -41,78 +41,42 @@
 </mvc:form>
 </body>
 
-<!-- 
 <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/1.12.4/jquery.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.j"></script>
 <script type="text/javascript">
 
 $(document).ready(function() {
 	
-	$('#playerForm').submit(function(event) {
+	$('#finishOrderForm').submit(function(event) {
 		var alertString = "";
 		
-		//Validate first name has value
-		if($('#firstName').val().length < 1){
-			alertString += "First name required.\n";
+		//Validate delivery street has value
+		if($('#deliveryStreet').val().length < 1){
+			alertString += "Delivery street required.\n";
 			event.preventDefault();
 		}
 		
-		//Validate number is not blank, then is a number, and then that it is a whole number in the given range
-		if($('#number').val().length < 1){
-			alertString += "Jersey number required.\n";
+		//Validate delivery city has value
+		if($('#deliveryCity').val().length < 1){
+			alertString += "Delivery city required.\n";
 			event.preventDefault();
-		} else{
-			if(isNaN($('#number').val()) == true){
-				alertString += "Jersey number must be a number.\n";
-				event.preventDefault();
-			} else{
-				var num = Number($('#number').val());
-				var num1 = num % 1;
-				if (num1 > 0 || num <= 0 || num >= 100){
-					alertString += "Jersey number must be a whole number between 1 and 99.\n";
-					event.preventDefault();
-				}
-			}
 		}
 		
-		//Validate height is not blank, is a number, and is between 3 and 8 feet
-		if($('#height').val().length < 1){
-			alertString += "Height required.\n";
+		//Validate delivery state has value with length of 2
+		if($('#deliveryState').val().length != 2){
+			alertString += "Delivery state invalid.\n";
 			event.preventDefault();
-		} else{
-			if(isNaN($('#height').val()) == true){
-				alertString += "Height must be a number";
-				event.preventDefault();
-			} else{
-				var num = Number($('#height').val());
-				if (num < 3 || num > 8){
-					alertString += "Height must be between 3 and 8 feet.\n";
-					event.preventDefault();
-				}
-			}
-		}	
-
-		//Validate weight is not blank, is a number, and is between 40 and 500 pounds
-		if($('#weight').val().length < 1){
-			alertString += "Weight required.\n";
-			event.preventDefault();
-		} else{
-			if(isNaN($('#weight').val()) == true){
-				alertString += "Weight must be a number";
-				event.preventDefault();
-			} else{
-				var num = Number($('#weight').val());
-				if (num < 40 || num > 500){
-					alertString += "Weight must be between 40 and 500 pounds.\n";
-					event.preventDefault();
-				}
-			}
 		}
-
-		//Validate position has value
-		if($('#position').val().length < 1){
-			alertString += "Position required.";
-			event.preventDefault;
+		
+		//Validate delivery zip is 5 characters long and a number
+		if($('#deliveryZip').val().length != 5){
+			alertString += "Delivery zip must be five numbers.\n";
+			event.preventDefault();
+		} else{
+			if(isNaN($('#deliveryZip').val()) == true){
+				alertString += "Delivery zip must be a number.\n";
+				event.preventDefault();
+			}
 		}
 	
 		if(alertString.length > 1){
@@ -123,6 +87,5 @@ $(document).ready(function() {
 });
 
 </script>
- -->
 
 </html>

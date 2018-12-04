@@ -12,7 +12,7 @@
     <table>
         <tr>
             <td>Phone:</td>
-            <td>${c.phoneId}</td>
+            <td>${custphone}</td>
         </tr>
         <tr>
             <td>First name:</td>

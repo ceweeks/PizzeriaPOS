@@ -8,10 +8,10 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Football Roster</title>
+<title>PizzeriaPOS - order item results</title>
 </head>
 <body>
-<h2>All Teams</h2>
+<h2>All Order Items For Order</h2>
 	<c:forEach items="${allorderitems}" var="item">
 		<table>
 			<tr>
